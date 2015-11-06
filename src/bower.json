@@ -1,0 +1,25 @@
+{
+  "name": "polymer",
+  "description": "",
+  "main": "",
+  "authors": [
+    "EvgenyDizzain <jenek2903@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.0",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.4",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.5",
+    "google-youtube": "~1.1.2",
+    "google-map": "~1.1.6"
+  }
+}

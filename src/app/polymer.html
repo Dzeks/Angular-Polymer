@@ -1,3 +1,38 @@
-<p>
-  polymer Works!
-</p>
+<p>Demos</p>
+
+
+<paper-card heading="YouTube player">
+    <div class="card-content">
+        <paper-input error-message="Invalid input!" label="Youtube video Id" (change)="setVideo($event)"></paper-input>
+
+        <google-youtube #player
+          [video-id]="videoId"
+          (google-youtube-ready)="playbackStatusChange($event)"
+          height="270px"
+          width="480px"
+          rel="0"
+          start="5"
+          autoplay="0">
+        </google-youtube>
+        <!-- OMOVFvcNfvE -->
+    </div>
+    <div class="card-actions">
+        <paper-button (click)="player.play()">Play</paper-button>
+        <paper-button (click)="player.pause()">Pause</paper-button>
+    </div>
+</paper-card>
+
+
+<paper-card heading="Google maps directions">
+    <div class="card-content">
+        <paper-input label="From" (change)="mapFrom = $event.target.value"></paper-input>
+        <paper-input label="To" (change)="mapTo = $event.target.value"></paper-input>
+
+        <google-map #map></google-map>
+        <google-map-directions (googleMapResponse)="located($event)" *ng-if="showMap" [map]="map" [start-address]="mapFrom" [end-address]="mapTo"></google-map-directions>
+        <!-- OMOVFvcNfvE -->
+    </div>
+    <div class="card-actions">
+        <paper-button (click)="getDirections()">Search</paper-button>
+    </div>
+</paper-card>

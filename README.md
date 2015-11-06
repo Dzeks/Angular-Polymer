@@ -1,0 +1,3 @@
+# Angular 2 demo using Polymer
+
+Note: there is currently an issue with events binding, it's not possible to bind events with dashes....
