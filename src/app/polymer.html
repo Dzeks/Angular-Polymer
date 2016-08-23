@@ -3,7 +3,8 @@
 
 <paper-card heading="YouTube player">
     <div class="card-content">
-        <paper-input error-message="Invalid input!" label="Youtube video Id" (change)="setVideo($event)"></paper-input>
+        <paper-input error-message="Invalid input!" label="Youtube video Id" 
+                    (keyup)="setVideo($event)"></paper-input>
 
         <google-youtube #player
           [video-id]="videoId"
@@ -25,11 +26,17 @@
 
 <paper-card heading="Google maps directions">
     <div class="card-content">
-        <paper-input label="From" (change)="mapFrom = $event.target.value"></paper-input>
-        <paper-input label="To" (change)="mapTo = $event.target.value"></paper-input>
+        <paper-input label="Search for" (change)="mapQuery = $event.target.value"></paper-input>
 
-        <google-map #map></google-map>
-        <google-map-directions (googleMapResponse)="located($event)" *ng-if="showMap" [map]="map" [start-address]="mapFrom" [end-address]="mapTo"></google-map-directions>
+        <google-map #map>
+            <google-map-marker [latitude]="marker.latitude"
+                               [longitude]="marker.longitude" [map]="map.map" [marker]="marker"
+                               *ng-for="#marker of mapResults">
+              <h2>{{marker.name}}</h2>
+              <span>{{marker.formatted_address}}</span>
+            </google-map-marker>
+        </google-map>
+        <google-map-search *ng-if="showMap" [map]="map.map" [query]="mapQuery" [results]="mapResults" (google-map-search-results)="storeResults($event)">
         <!-- OMOVFvcNfvE -->
     </div>
     <div class="card-actions">

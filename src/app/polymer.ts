@@ -1,4 +1,4 @@
-import {Component, bootstrap, NgIf} from 'angular2/angular2';
+import {Component, bootstrap, CORE_DIRECTIVES} from 'angular2/angular2';
 
 
 @Component({
@@ -6,8 +6,9 @@ import {Component, bootstrap, NgIf} from 'angular2/angular2';
   providers: [],
   templateUrl: 'app/polymer.html',
   styleUrls: ['app/polymer.css'],
-  directives: [NgIf],
-  pipes: []
+  directives: [CORE_DIRECTIVES],
+  pipes: [],
+  events: []
 })
 export class PolymerApp {
     videoId: string;
@@ -15,8 +16,8 @@ export class PolymerApp {
 
     showMap: boolean;
     map: any;
-    mapFrom: string;
-    mapTo: string;
+    mapQuery: string;
+    mapResults = [];
 
     constructor() {}
     onClick() {
@@ -34,5 +35,9 @@ export class PolymerApp {
     }
     located($event) {
         console.log($event);
+    }
+    
+    storeResults($event) {
+        this.mapResults = $event.detail;
     }
 }
